@@ -1,4 +1,4 @@
-<p>user-list works!</p>
+<!-- <p>user-list works!</p>
 
 <ul>
   <li *ngFor="let user of users">
@@ -16,4 +16,24 @@
   </li>
 </ul>
 
+ -->
 
+ <p>user-list works!</p>
+
+<ul>
+  <li *ngFor="let user of users">
+    <p (click)="togglePosts(user)" style="cursor: pointer;">
+      <strong>Name:</strong> {{ user.name }}
+    </p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Address:</strong> {{ user.address.street }}, {{ user.address.suite }}, {{ user.address.city }}, {{ user.address.zipcode }}</p>
+    <p><strong>Number of Posts:</strong> {{ user.posts ? user.posts.length : 0 }}</p>
+
+    <ul *ngIf="user.showPosts && user.posts && user.posts.length > 0">
+      <li *ngFor="let post of user.posts">
+        <strong>Post:</strong> {{ post.title }}
+      </li>
+    </ul>
+    <hr>
+  </li>
+</ul>
